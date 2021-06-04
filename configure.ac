@@ -22,6 +22,8 @@ LT_INIT
 
 PKG_CHECK_MODULES(OCTETOS_CORE,octetos-core)
 
+PKG_CHECK_MODULES(OCTETOS_MATH,octetos-math)
+
 AM_CONDITIONAL(WITH_TESTS, test x"$with_tests" = "xyes")
 AC_ARG_WITH([tests], AS_HELP_STRING([--with-tests], [Compilando con soporte para Tests]))
 if test "x$with_tests" = "xyes"; then 

@@ -6,56 +6,130 @@
 namespace oct::phy
 {
 
-Atom::Atom() : protons(Symbol::None),neutrals(Symbol::None)
+
+
+Particle::Particle(ParticleType t) : type(t)
 {
 
 }
-Atom::Atom(Symbol s) : protons(s),neutrals(s)
+
+
+
+
+
+
+
+
+
+
+
+Electron::Electron() : Particle(ParticleType::ELECTRON)
 {
-	
-}
-Atom::Atom(unsigned short n) : protons(n),neutrals(n)
-{
-	
-}
-Atom::Atom(unsigned short p,unsigned short n) : protons(p),neutrals(n)
-{
-	
+
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Atom::Atom() : protonsCount(Symbol::None),neutralsCount(Symbol::None),electrons(NULL),electronsCount(0)
+{
+	
+}
+Atom::Atom(Symbol s) : protonsCount(s),neutralsCount(s)
+{
+	electronsCount = s;
+	electrons = new Electron[s];
+}
+Atom::Atom(unsigned short n) : protonsCount(n),neutralsCount(n)
+{
+	electronsCount = n;
+	electrons = new Electron[n];
+}
+Atom::Atom(unsigned short p,unsigned short n,unsigned short e) : protonsCount(p),neutralsCount(n)
+{
+	electronsCount = e;
+	electrons = new Electron[e];
+}
+Atom::~Atom()
+{
+	if(electrons) delete[] electrons;
+}
 unsigned short Atom::getAtomicNumber()const
 {
-	return protons;
+	return protonsCount;
 }
 Symbol Atom::getSymbol()const
 {
-	return Symbol(protons);
+	return Symbol(protonsCount);
 }
 const char* Atom::getName()const
 {
-	return genNames(Symbol(protons));
+	return genNames(Symbol(protonsCount));
 }
 const char* Atom::getStringSymbol()const
 {
-	return genStrSymbol(Symbol(protons));
+	return genStrSymbol(Symbol(protonsCount));
 }
 
+//propiedades
+double Atom::getNucleoCharge()const
+{
+	return double(protonsCount) * unitProtonCharge;
+}
+double Atom::getElectronCharge()const
+{
+	return double(electronsCount) * unitElectronCharge;
+}
+	
+	
 void Atom::set(Symbol s)
 {
-	protons = (unsigned short)s;
-	neutrals = (unsigned short)s;
+	protonsCount = (unsigned short)s;
+	neutralsCount = (unsigned short)s;
+	electrons = new Electron[s];
 }
 void Atom::set(unsigned short a)
 {
-	protons = (unsigned short)a;
-	neutrals = (unsigned short)a;
+	protonsCount = (unsigned short)a;
+	neutralsCount = (unsigned short)a;
+	electrons = new Electron[a];
 }
-void Atom::set(unsigned short p,unsigned short n)
+void Atom::set(unsigned short p,unsigned short n,unsigned short e)
 {
-	protons = p;
-	neutrals = n;
+	protonsCount = p;
+	neutralsCount = n;
+	electrons = new Electron[e];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+Enviroment::Enviroment()
+{
+	size = 0.001;
+	time = 0.000001;
+}
+Enviroment::Enviroment(double s, double t) : size(s),time(t)
+{
+}
 
 
 }

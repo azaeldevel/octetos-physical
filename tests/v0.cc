@@ -37,9 +37,11 @@ void testDeveloping()
 	{
 		atoms[i].set(i);	
 		CU_ASSERT(atoms[i].getSymbol() == atoms[i].getAtomicNumber()); //el numero atomico es equivalenmte a la enumeriacion
-		
+		std::cout << "Propiedades de " << atoms[i].getName() << "\n";
+		std::cout << "\tcarga del nucle = " << atoms[i].getNucleoCharge() << "\n";
+		std::cout << "\tcarga de los electrones : " << atoms[i].getElectronCharge() << "\n";
 	}
-		
+			
 		
 }
 

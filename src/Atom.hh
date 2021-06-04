@@ -3,8 +3,13 @@
 #ifndef OCTETOS_PHYSICAL_ATOM_HH
 #define OCTETOS_PHYSICAL_ATOM_HH
 
+#include <octetos/math/Point.hh>
 namespace oct::phy
 {
+static double unitProtonCharge = 1.6e-19;//Coulomns
+static double unitElectronCharge = -1.6e-19;//Coulomns
+static double protonBulk = 1.6725e-27;//Kilogramos
+static double eletronBulk = 9.1095e-31;//Kilogramos
 
 enum Symbol
 {
@@ -130,31 +135,86 @@ enum Symbol
 	Unknow
 };
 
+enum ParticleType
+{
+	NONE,
+	PROTON,
+	NEUTRON,
+	ELECTRON,
+	ATOM
+};
+
+class Particle : public math::Point<double>
+{
+public:
+	Particle(ParticleType);
+	Particle(double x,double y, double z,ParticleType);
+
+private:
+	ParticleType type;
+};
+
+class Protron : public Particle
+{
+public:
+	Protron(double x,double y, double z);
+};
+class Neutron : public Particle
+{
+public:
+	Neutron(double x,double y, double z);
+};
+class Electron : public Particle
+{
+public:
+	Electron();
+	Electron(double x,double y, double z);
+};
+
 class Atom
 {
 public:
 	Atom();
 	Atom(Symbol);
 	Atom(unsigned short numatomic);
-	Atom(unsigned short proton,unsigned short neutral);
+	Atom(unsigned short proton,unsigned short neutral,unsigned short electron);
+	~Atom();
 
 	unsigned short getAtomicNumber()const;
 	Symbol getSymbol()const;
 	const char* getName()const;
 	const char* getStringSymbol()const;
+	//propiedades
+	double getNucleoCharge()const;
+	double getElectronCharge()const;
 
 	void set(Symbol);
 	void set(unsigned short numatomic);
-	void set(unsigned short proton,unsigned short neutral);
+	void set(unsigned short proton,unsigned short neutral,unsigned short electron);
 
 protected:
-	unsigned short protons;
-	unsigned short neutrals;
+	unsigned short protonsCount;
+	unsigned short neutralsCount;
+	unsigned short electronsCount;
+	Electron* electrons;
 
 protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
 };
+
+
+class Enviroment
+{
+public:
+	Enviroment();
+	Enviroment(double size, double time);
+
+private:
+	double size;//cm
+	double time;//s
+};
+
 
 }
 
