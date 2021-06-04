@@ -20,14 +20,14 @@
 
 //#include <list>
 #include <iostream>
-#include <Atom.hh>
+#include <Atom-Bohr.hh>
 
 
 
 void testDeveloping()
 {	
 	unsigned short MAXNUMATOM = 118;
-	oct::phy::Atom atoms[MAXNUMATOM];
+	oct::phy::Bohr atoms[MAXNUMATOM];
 	
 	for(unsigned short i = 1; i < MAXNUMATOM; i++)
 	{

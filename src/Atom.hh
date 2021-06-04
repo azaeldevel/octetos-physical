@@ -126,15 +126,17 @@ enum Symbol
 	Mc,
 	Lv,
 	Ts,
-	Og
+	Og,
+	Unknow
 };
+
 class Atom
 {
 public:
 	Atom();
-	Atom(unsigned short numatomic);
 	Atom(Symbol);
-	Atom(unsigned short proton,unsigned short neutral,unsigned short electron);
+	Atom(unsigned short numatomic);
+	Atom(unsigned short proton,unsigned short neutral);
 
 	unsigned short getAtomicNumber()const;
 	Symbol getSymbol()const;
@@ -142,13 +144,14 @@ public:
 	const char* getStringSymbol()const;
 
 	void set(Symbol);
-	void set(unsigned short);
+	void set(unsigned short numatomic);
+	void set(unsigned short proton,unsigned short neutral);
 
+protected:
+	unsigned short protons;
+	unsigned short neutrals;
 
-private:
-	Symbol symbol;
-
-private:
+protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
 };

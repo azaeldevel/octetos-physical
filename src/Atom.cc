@@ -6,46 +6,55 @@
 namespace oct::phy
 {
 
-Atom::Atom() : symbol(Symbol::None)
+Atom::Atom() : protons(Symbol::None),neutrals(Symbol::None)
 {
 
 }
-Atom::Atom(Symbol s) : symbol(s)
+Atom::Atom(Symbol s) : protons(s),neutrals(s)
 {
 	
 }
-Atom::Atom(unsigned short n) : symbol((Symbol)n)
+Atom::Atom(unsigned short n) : protons(n),neutrals(n)
 {
 	
 }
-
+Atom::Atom(unsigned short p,unsigned short n) : protons(p),neutrals(n)
+{
+	
+}
 
 unsigned short Atom::getAtomicNumber()const
 {
-	return symbol;
+	return protons;
 }
 Symbol Atom::getSymbol()const
 {
-	return symbol;
+	return Symbol(protons);
 }
 const char* Atom::getName()const
 {
-	return genNames(symbol);
+	return genNames(Symbol(protons));
 }
 const char* Atom::getStringSymbol()const
 {
-	return genStrSymbol(symbol);
+	return genStrSymbol(Symbol(protons));
 }
 
 void Atom::set(Symbol s)
 {
-	symbol = s;
+	protons = (unsigned short)s;
+	neutrals = (unsigned short)s;
 }
 void Atom::set(unsigned short a)
 {
-	symbol = Symbol(a);
+	protons = (unsigned short)a;
+	neutrals = (unsigned short)a;
 }
-
+void Atom::set(unsigned short p,unsigned short n)
+{
+	protons = p;
+	neutrals = n;
+}
 
 
 
