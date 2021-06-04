@@ -9,13 +9,11 @@ AM_CFLAGS =\
 	 -Wall\
 	 -g
 
-bin_PROGRAMS = octetos_physical
+lib_LTLIBRARIES = liboctetos-physical.la
 
-octetos_physical_SOURCES = \
-	develop.cc
 
-octetos_physical_LDFLAGS = 
-
-octetos_physical_LDADD = 
+liboctetos_physical_la_CXXFLAGS = 
+liboctetos_physical_la_LIBADD =  
+liboctetos_physical_la_SOURCES = Atom.cc gen/names.cc gen/symbols.cc  
 
 
