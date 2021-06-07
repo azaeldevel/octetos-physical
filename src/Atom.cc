@@ -90,7 +90,10 @@ double Atom::getElectronCharge()const
 {
 	return double(electronsCount) * unitElectronCharge;
 }
-	
+double Atom::getRadion(unsigned short n)const
+{
+	return genRadio(Symbol(protonsCount),n);
+}
 	
 void Atom::set(Symbol s)
 {

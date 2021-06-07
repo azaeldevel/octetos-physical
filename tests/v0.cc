@@ -37,12 +37,18 @@ void testDeveloping()
 	{
 		atoms[i].set(i);	
 		CU_ASSERT(atoms[i].getSymbol() == atoms[i].getAtomicNumber()); //el numero atomico es equivalenmte a la enumeriacion
+		/*
 		std::cout << "Propiedades de " << atoms[i].getName() << "\n";
 		std::cout << "\tcarga del nucle = " << atoms[i].getNucleoCharge() << "\n";
 		std::cout << "\tcarga de los electrones : " << atoms[i].getElectronCharge() << "\n";
+		*/
 	}
 			
 		
+	oct::phy::Bohr& H = atoms[1];
+	std::cout << "Para n = 1, r = " << H.getRadion(1) << "\n";
+	double radioBohr = 5.29177e-11;
+	CU_ASSERT(radioBohr - H.getRadion(1) < 0.0000001);
 }
 
 int init(void)

@@ -6,10 +6,14 @@
 #include <octetos/math/Point.hh>
 namespace oct::phy
 {
-static double unitProtonCharge = 1.6e-19;//Coulomns
-static double unitElectronCharge = -1.6e-19;//Coulomns
-static double protonBulk = 1.6725e-27;//Kilogramos
-static double eletronBulk = 9.1095e-31;//Kilogramos
+//https://es.wikipedia.org/wiki/Electr%C3%B3n
+static const double unitProtonCharge = 1.602176634e-19;//Coulomns
+static const double unitElectronCharge = -1.602176634e-19;//Coulomns
+static const double protonBulk = 1.672621898e-27;//Kilogramos
+static const double eletronBulk = 9.10938291e-31;//Kilogramos
+static const double hPlank = 6.62607015e-34;
+static const double hDirac = 1.054571817e-34;
+static const double kCoulomb = 8.9875517923e9;
 
 enum Symbol
 {
@@ -159,11 +163,13 @@ class Protron : public Particle
 public:
 	Protron(double x,double y, double z);
 };
+
 class Neutron : public Particle
 {
 public:
 	Neutron(double x,double y, double z);
 };
+
 class Electron : public Particle
 {
 public:
@@ -171,7 +177,7 @@ public:
 	Electron(double x,double y, double z);
 };
 
-class Atom
+class Atom : public math::Point<double>
 {
 public:
 	Atom();
@@ -187,6 +193,7 @@ public:
 	//propiedades
 	double getNucleoCharge()const;
 	double getElectronCharge()const;
+	double getRadion(unsigned short n)const;
 
 	void set(Symbol);
 	void set(unsigned short numatomic);
@@ -201,6 +208,7 @@ protected:
 protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
+	static double genRadio(Symbol, unsigned short n);
 };
 
 
