@@ -94,7 +94,13 @@ double Atom::getRadion(unsigned short n)const
 {
 	return genRadio(Symbol(protonsCount),n);
 }
-	
+const QuantumNumber& Atom::getQuantumNumber()
+{
+	//generar si no existe
+	if(qnumber.empty()) genQuantumNumber(Symbol(protonsCount), qnumber);
+	return qnumber;
+}
+
 void Atom::set(Symbol s)
 {
 	protonsCount = (unsigned short)s;

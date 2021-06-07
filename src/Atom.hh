@@ -4,6 +4,9 @@
 #define OCTETOS_PHYSICAL_ATOM_HH
 
 #include <octetos/math/Point.hh>
+#include <vector>
+
+
 namespace oct::phy
 {
 //https://es.wikipedia.org/wiki/Electr%C3%B3n
@@ -14,6 +17,10 @@ static const double eletronBulk = 9.10938291e-31;//Kilogramos
 static const double hPlank = 6.62607015e-34;
 static const double hDirac = 1.054571817e-34;
 static const double kCoulomb = 8.9875517923e9;
+
+typedef unsigned short AtomicNumber;
+
+AtomicNumber randNumber();
 
 enum Symbol
 {
@@ -177,6 +184,27 @@ public:
 	Electron(double x,double y, double z);
 };
 
+enum Suborbital
+{
+	s,
+	p,
+	d,
+	f
+};
+
+struct Orbital
+{
+	unsigned short main;
+	Suborbital suborbital;//tipode orbital
+	unsigned short electron;//electrones en el orbital
+};
+
+struct QuantumNumber : std::vector<Orbital>
+{
+	operator std::string() const;	
+	unsigned short getElectronValencia()const;
+};
+
 class Atom : public math::Point<double>
 {
 public:
@@ -190,6 +218,7 @@ public:
 	Symbol getSymbol()const;
 	const char* getName()const;
 	const char* getStringSymbol()const;
+	const QuantumNumber& getQuantumNumber();
 	//propiedades
 	double getNucleoCharge()const;
 	double getElectronCharge()const;
@@ -204,11 +233,13 @@ protected:
 	unsigned short neutralsCount;
 	unsigned short electronsCount;
 	Electron* electrons;
+	QuantumNumber qnumber;
 
 protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
 	static double genRadio(Symbol, unsigned short n);
+	static void genQuantumNumber(Symbol,QuantumNumber&);
 };
 
 

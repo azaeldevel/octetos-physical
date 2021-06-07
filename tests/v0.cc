@@ -42,13 +42,14 @@ void testDeveloping()
 		std::cout << "\tcarga del nucle = " << atoms[i].getNucleoCharge() << "\n";
 		std::cout << "\tcarga de los electrones : " << atoms[i].getElectronCharge() << "\n";
 		*/
-	}
-			
+	}		
 		
 	oct::phy::Bohr& H = atoms[1];
-	std::cout << "Para n = 1, r = " << H.getRadion(1) << "\n";
+	//std::cout << "Para n = 1, r = " << H.getRadion(1) << "\n";
 	double radioBohr = 5.29177e-11;
-	CU_ASSERT(radioBohr - H.getRadion(1) < 0.0000001);
+	CU_ASSERT(radioBohr - H.getRadion(1) < 0.00001);
+	
+	
 }
 
 int init(void)
