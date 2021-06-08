@@ -5,7 +5,7 @@
 #define OCTETOS_PHYSICAL_ATOM_BOHR_HH
 
 #include "Atom.hh"
-
+#include <vector>
 
 namespace oct::phy
 {
@@ -31,6 +31,9 @@ struct QuantumNumber : std::vector<Orbital>
 	unsigned short getElectronValencia()const;
 };
 
+typedef unsigned short valencia;
+typedef std::vector<valencia> Valencias;
+
 
 class Bohr : public Atom
 {
@@ -39,13 +42,17 @@ public:
 	Bohr(unsigned short numatomic);
 	Bohr(Symbol);
 	
-	const QuantumNumber& getQuantumNumber();
+	const Valencias& getValencias()const;
+	float getNegativityNumber()const;//escala de pauling
+	const phy::QuantumNumber& getQuantumNumber()const;
 
 protected:
 	QuantumNumber qnumber;
 	
-protected:	
+protected:
 	static void genQuantumNumber(Symbol s, QuantumNumber& q);
+	static bool genValencias(Symbol,Valencias&);
+	static float genNegativityNumber(Symbol);
 };
 
 }
