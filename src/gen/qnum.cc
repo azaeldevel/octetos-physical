@@ -85,7 +85,7 @@ bool genQuantumNumber_f(unsigned short& rest,Orbital& o,QuantumNumber& q)
 	
 	throw octetos::core::Exception("Error desconocido",__FILE__,__LINE__);
 }
-void Bohr::genQuantumNumber(Symbol s, QuantumNumber& q)
+void Atom::genQuantumNumber(Symbol s, QuantumNumber& q)
 {
 	Orbital o;
 	unsigned short rest = s;

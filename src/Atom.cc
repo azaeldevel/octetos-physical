@@ -98,6 +98,18 @@ double Atom::getEnergy(unsigned short n)const
 {
 	return genEnergy(Symbol(protonsCount),n);
 }
+const Valencias& Atom::getValencias() const
+{	
+	return valencias;
+}
+float Atom::getNegativityNumber()const//escala de pauling
+{
+
+}
+const QuantumNumber& Atom::getQuantumNumber() const
+{
+	return qnumber;
+}
 
 
 void Atom::set(Symbol s)

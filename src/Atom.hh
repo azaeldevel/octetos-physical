@@ -185,7 +185,29 @@ public:
 	Electron(double x,double y, double z);
 };
 
+enum Suborbital
+{
+	s,
+	p,
+	d,
+	f
+};
 
+struct Orbital
+{
+	unsigned short main;
+	Suborbital suborbital;//tipode orbital
+	unsigned short electron;//electrones en el orbital
+};
+
+struct QuantumNumber : std::vector<Orbital>
+{
+	operator std::string() const;	
+	unsigned short getElectronValencia()const;
+};
+
+typedef unsigned short valencia;
+typedef std::vector<valencia> Valencias;
 
 class Atom : public math::Point<double>
 {
@@ -206,6 +228,10 @@ public:
 	double getRadio(unsigned short n)const;
 	double getEnergy(unsigned short n)const;
 
+	const Valencias& getValencias()const;
+	float getNegativityNumber()const;//escala de pauling
+	const QuantumNumber& getQuantumNumber()const;
+
 	void set(Symbol);
 	void set(unsigned short numatomic);
 	void set(unsigned short proton,unsigned short neutral,unsigned short electron);
@@ -215,12 +241,17 @@ protected:
 	unsigned short neutralsCount;
 	unsigned short electronsCount;
 	Electron* electrons;
+	Valencias valencias;
+	QuantumNumber qnumber;
 
 protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
 	static double genRadio(Symbol, unsigned short n);
 	static double genEnergy(Symbol, unsigned short n);
+	static void genQuantumNumber(Symbol s, QuantumNumber& q);
+	static bool genValencias(Symbol,Valencias&);
+	static float genNegativityNumber(Symbol);
 };
 
 
