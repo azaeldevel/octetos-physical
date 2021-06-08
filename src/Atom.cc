@@ -98,12 +98,7 @@ double Atom::getEnergy(unsigned short n)const
 {
 	return genEnergy(Symbol(protonsCount),n);
 }
-/*const QuantumNumber& Atom::getQuantumNumber()
-{
-	//generar si no existe
-	if(qnumber.empty()) genQuantumNumber(Symbol(protonsCount), qnumber);
-	return qnumber;
-}*/
+
 
 void Atom::set(Symbol s)
 {

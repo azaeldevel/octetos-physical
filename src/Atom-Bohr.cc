@@ -20,7 +20,12 @@ Bohr::Bohr(unsigned short n) : Atom((Symbol)n)
 }
 
 
-
+const QuantumNumber& Bohr::getQuantumNumber()
+{
+	//generar si no existe
+	if(qnumber.empty()) genQuantumNumber(Symbol(protonsCount), qnumber);
+	return qnumber;
+}
 
 
 
