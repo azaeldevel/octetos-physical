@@ -44,12 +44,27 @@ void testDeveloping()
 		*/
 	}		
 		
-	oct::phy::Bohr& H = atoms[1];
-	//std::cout << "Para n = 1, r = " << H.getRadion(1) << "\n";
-	double radioBohr = 5.29177e-11;
-	CU_ASSERT(radioBohr - H.getRadion(1) < 0.00001);
-	
-	
+	oct::phy::Bohr& H = atoms[1];	
+	double rH1 = H.getRadio(1);
+	double eH1 = H.getEnergy(1);	
+	CU_ASSERT(5.29177e-11 - rH1 < 0.00001);
+	CU_ASSERT(2.17987e-18 + eH1 < 0.1e-18);
+	//std::cout << "Para H n = 1, r = " << rH1 << "\n";
+	//std::cout << "Para H n = 1, E0 = " << eH1 << "\n";
+	oct::phy::Bohr& Li = atoms[3];
+	double rLi1 = Li.getRadio(1);
+	double eLi1 = Li.getEnergy(1);	
+	CU_ASSERT(1.76392e-11 - rLi1 < 0.00001);
+	CU_ASSERT(1.96188e-17 + eLi1 < 0.1e-17);
+	//std::cout << "Para Li n = 1, r = " << rLi1 << "\n";
+	//std::cout << "Para Li n = 1, E0 = " << eLi1 << "\n";
+	oct::phy::Bohr& Na = atoms[11];
+	double rNa1 = Na.getRadio(1);
+	double eNa1 = Na.getEnergy(1);	
+	CU_ASSERT(4.8107e-12 - rNa1 < 0.00001);
+	CU_ASSERT(2.63765e-16 + eNa1 < 0.1e-16);
+	//std::cout << "Para Na n = 1, r = " << rNa1 << "\n";
+	//std::cout << "Para Na n = 1, E0 = " << eNa1 << "\n";
 }
 
 int init(void)

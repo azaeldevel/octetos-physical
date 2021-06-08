@@ -90,16 +90,20 @@ double Atom::getElectronCharge()const
 {
 	return double(electronsCount) * unitElectronCharge;
 }
-double Atom::getRadion(unsigned short n)const
+double Atom::getRadio(unsigned short n)const
 {
 	return genRadio(Symbol(protonsCount),n);
 }
-const QuantumNumber& Atom::getQuantumNumber()
+double Atom::getEnergy(unsigned short n)const
+{
+	return genEnergy(Symbol(protonsCount),n);
+}
+/*const QuantumNumber& Atom::getQuantumNumber()
 {
 	//generar si no existe
 	if(qnumber.empty()) genQuantumNumber(Symbol(protonsCount), qnumber);
 	return qnumber;
-}
+}*/
 
 void Atom::set(Symbol s)
 {

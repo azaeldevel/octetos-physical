@@ -17,6 +17,7 @@ static const double eletronBulk = 9.10938291e-31;//Kilogramos
 static const double hPlank = 6.62607015e-34;
 static const double hDirac = 1.054571817e-34;
 static const double kCoulomb = 8.9875517923e9;
+static const double ePermitividad0 = 8.8541878176e-12;
 
 typedef unsigned short AtomicNumber;
 
@@ -218,11 +219,12 @@ public:
 	Symbol getSymbol()const;
 	const char* getName()const;
 	const char* getStringSymbol()const;
-	const QuantumNumber& getQuantumNumber();
+	//const QuantumNumber& getQuantumNumber();
 	//propiedades
 	double getNucleoCharge()const;
 	double getElectronCharge()const;
-	double getRadion(unsigned short n)const;
+	double getRadio(unsigned short n)const;
+	double getEnergy(unsigned short n)const;
 
 	void set(Symbol);
 	void set(unsigned short numatomic);
@@ -233,13 +235,14 @@ protected:
 	unsigned short neutralsCount;
 	unsigned short electronsCount;
 	Electron* electrons;
-	QuantumNumber qnumber;
+	//QuantumNumber qnumber;
 
 protected:
 	static const char* genNames(Symbol);
 	static const char* genStrSymbol(Symbol);
 	static double genRadio(Symbol, unsigned short n);
-	static void genQuantumNumber(Symbol,QuantumNumber&);
+	static double genEnergy(Symbol, unsigned short n);
+	//static void genQuantumNumber(Symbol,QuantumNumber&);
 };
 
 
