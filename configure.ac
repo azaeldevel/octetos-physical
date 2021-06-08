@@ -35,4 +35,5 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 tests/Makefile
+src/octetos-physical.pc
 ])

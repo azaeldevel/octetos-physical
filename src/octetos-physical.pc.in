@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@prefix@/include
+
+Name: octetos-core
+Description: C++ Library for Physical.
+Version: @VERSION@
+Requires: octetos-math
+Libs: -L${libdir} -loctetos-physical 
+Cflags: -I${includedir}
