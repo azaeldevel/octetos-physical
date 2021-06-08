@@ -206,7 +206,7 @@ struct QuantumNumber : std::vector<Orbital>
 	unsigned short getElectronValencia()const;
 };
 
-typedef unsigned short valencia;
+typedef short valencia;
 typedef std::vector<valencia> Valencias;
 
 class Atom : public math::Point<double>

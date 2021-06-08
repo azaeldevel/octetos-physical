@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-#include "../Atom-Bohr.hh"
+#include "../Atom.hh"
 
 namespace oct::phy
 {
