@@ -8,6 +8,6 @@ includedir=@prefix@/include
 Name: octetos-core
 Description: C++ Library for Physical.
 Version: @VERSION@
-Requires: octetos-math
+Requires: octetos-core octetos-math
 Libs: -L${libdir} -loctetos-physical 
 Cflags: -I${includedir}
