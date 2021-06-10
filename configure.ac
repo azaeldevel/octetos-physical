@@ -4,7 +4,7 @@ AC_INIT(octetos-physical, 0.9.0-alpha, azael.devel@gmail.com)
 
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([1.11 gnu subdir-objects])
+AM_INIT_AUTOMAKE([gnu subdir-objects])
 
 AM_SILENT_RULES([yes])
 
