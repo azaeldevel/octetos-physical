@@ -3,21 +3,22 @@
 #ifndef OCTETOS_PHYSICAL_ATOM_HH
 #define OCTETOS_PHYSICAL_ATOM_HH
 
-#include <octetos/math/Point.hh>
+
 #include <vector>
 
+#include "Particle.hh"
 
 namespace oct::phy
 {
 //https://es.wikipedia.org/wiki/Electr%C3%B3n
-static const double unitProtonCharge = 1.602176634e-19;//Coulomns
-static const double unitElectronCharge = -1.602176634e-19;//Coulomns
+static const double protonCharge = 1.602176634e-19;//Coulomns
+static const double electronCharge = -1.602176634e-19;//Coulomns
 static const double protonBulk = 1.672621898e-27;//Kilogramos
 static const double eletronBulk = 9.10938291e-31;//Kilogramos
 static const double hPlank = 6.62607015e-34;
 static const double hDirac = 1.054571817e-34;
 static const double kCoulomb = 8.9875517923e9;
-static const double ePermitividad0 = 8.8541878176e-12;
+static const double permitivity0 = 8.8541878176e-12;
 
 typedef unsigned short AtomicNumber;
 
@@ -147,44 +148,6 @@ enum Symbol
 	Unknow
 };
 
-enum ParticleType
-{
-	NONE,
-	PROTON,
-	NEUTRON,
-	ELECTRON,
-	ATOM
-};
-
-class Particle : public math::Point<double>
-{
-public:
-	Particle(ParticleType);
-	Particle(double x,double y, double z,ParticleType);
-
-private:
-	ParticleType type;
-};
-
-class Protron : public Particle
-{
-public:
-	Protron(double x,double y, double z);
-};
-
-class Neutron : public Particle
-{
-public:
-	Neutron(double x,double y, double z);
-};
-
-class Electron : public Particle
-{
-public:
-	Electron();
-	Electron(double x,double y, double z);
-};
-
 enum Suborbital
 {
 	s,
@@ -209,6 +172,12 @@ struct QuantumNumber : std::vector<Orbital>
 typedef short valencia;
 typedef std::vector<valencia> Valencias;
 
+//https://es.wikipedia.org/wiki/Modelo_at%C3%B3mico_de_Bohr, segundo posutulado
+//http://www.sc.ehu.es/sbweb/fisica/elecmagnet/movimiento/bohr/bohr.htm
+/**
+*\brief Descripcion fisca del Atomo
+*
+*/
 class Atom : public math::Point<double>
 {
 public:
@@ -225,8 +194,31 @@ public:
 	//propiedades
 	double getNucleoCharge()const;
 	double getElectronCharge()const;
+	/**
+	*\brief Radio fundamental del elemento
+	*
+	*/
 	double getRadio(unsigned short n)const;
+	/**
+	*\brief Energia fundamental del elemento
+	*
+	*/
 	double getEnergy(unsigned short n)const;
+	/**
+	*\brief Longitud de Onda fundamental
+	*
+	*/
+	double getLamda(unsigned short n)const;
+	/**
+	*\brief Velocidad fundamental del elemento
+	*
+	*/
+	double getVelocity(unsigned short n)const;	
+	/**
+	*\brief Momento fundamental del elemento
+	*
+	*/
+	double getMomentum(unsigned short n)const;
 
 	const Valencias& getValencias()const;
 	float getNegativityNumber()const;//escala de pauling

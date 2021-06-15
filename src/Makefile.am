@@ -14,7 +14,7 @@ lib_LTLIBRARIES = liboctetos-physical.la
 
 liboctetos_physical_la_CXXFLAGS = 
 liboctetos_physical_la_LIBADD =  
-liboctetos_physical_la_SOURCES = Atom.cc gen/names.cc gen/symbols.cc gen/props.cc gen/qnum.cc
+liboctetos_physical_la_SOURCES = Atom.cc Particle.cc gen/names.cc gen/symbols.cc gen/props.cc gen/qnum.cc
 
 
 octetos_physical_includedir = $(includedir)/octetos/physical

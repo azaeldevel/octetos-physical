@@ -52,6 +52,7 @@ void testDeveloping()
 	//std::cout << eH1/(1.6e-19) << "eV";
 	//std::cout << "Para H n = 1, r = " << rH1 << "\n";
 	//std::cout << "Para H n = 1, E0 = " << eH1 << "\n";
+	//std::cout << "Lamda = " << " = " << H.getLamda(1) << " = " << 2.0 * M_PI * rH1 << "\n";
 	oct::phy::Atom& Li = atoms[3];
 	double rLi1 = Li.getRadio(1);
 	double eLi1 = Li.getEnergy(1);	
@@ -76,15 +77,15 @@ void testDeveloping()
 	CU_ASSERT(6.69845e-13 - rAu1 < 0.1e-11);
 	CU_ASSERT(2.41144e-11 - rAu6 < 0.1e-11);
 	//CU_ASSERT(2.63765e-16 + eAu1 < 0.1e-16);
-	std::cout << "Para Au n = 1, r = " << rAu1 << "\n";
+	/*std::cout << "Para Au n = 1, r = " << rAu1 << "\n";
 	std::cout << "Para Au n = 2, r = " << rAu2 << "\n";
 	std::cout << "Para Au n = 3, r = " << rAu3 << "\n";
 	std::cout << "Para Au n = 4, r = " << rAu4 << "\n";
 	std::cout << "Para Au n = 5, r = " << rAu5 << "\n";
-	std::cout << "Para Au n = 6, r = " << rAu6 << "\n";
+	std::cout << "Para Au n = 6, r = " << rAu6 << "\n";*/
 	//std::cout << "Para Na n = 1, E0 = " << eNa1 << "\n";
 	double cmpAuH = rAu6/rH1;
-	std::cout << "Comparacion con el Au/H " << cmpAuH << "\n";
+	//std::cout << "Comparacion con el Au/H " << cmpAuH << "\n";
 	
 	oct::phy::Atom& U = atoms[92];
 	double rU1 = U.getRadio(1);
@@ -97,16 +98,18 @@ void testDeveloping()
 	//CU_ASSERT(6.69845e-13 - rU1 < 0.1e-11);
 	//CU_ASSERT(2.41144e-11 - rU6 < 0.1e-11);
 	//CU_ASSERT(2.63765e-16 + eAu1 < 0.1e-16);
-	std::cout << "Para U n = 1, r = " << rU1 << "\n";
+	/*std::cout << "Para U n = 1, r = " << rU1 << "\n";
 	std::cout << "Para U n = 2, r = " << rU2 << "\n";
 	std::cout << "Para U n = 3, r = " << rU3 << "\n";
 	std::cout << "Para U n = 4, r = " << rU4 << "\n";
 	std::cout << "Para U n = 5, r = " << rU5 << "\n";
 	std::cout << "Para U n = 6, r = " << rU6 << "\n";
-	std::cout << "Para U n = 7, r = " << rU7 << "\n";
+	std::cout << "Para U n = 7, r = " << rU7 << "\n";*/
 	//std::cout << "Para Na n = 1, E0 = " << eNa1 << "\n";
 	double cmpUH = rU7/rH1;
-	std::cout << "Comparacion con el U/H " << cmpUH << "\n";
+	//std::cout << "Comparacion con el U/H " << cmpUH << "\n";
+	
+	std::cout << "B en P = " << (pow(oct::phy::unitElectronCharge,2.0)) / (2.0 * pow(rH1,2.0));
 }
 
 int init(void)

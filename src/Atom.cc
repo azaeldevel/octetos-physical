@@ -8,25 +8,6 @@ namespace oct::phy
 
 
 
-Particle::Particle(ParticleType t) : type(t)
-{
-
-}
-
-
-
-
-
-
-
-
-
-
-
-Electron::Electron() : Particle(ParticleType::ELECTRON)
-{
-
-}
 
 
 
@@ -129,11 +110,11 @@ const char* Atom::getStringSymbol()const
 //propiedades
 double Atom::getNucleoCharge()const
 {
-	return double(protonsCount) * unitProtonCharge;
+	return double(protonsCount) * protonCharge;
 }
 double Atom::getElectronCharge()const
 {
-	return double(electronsCount) * unitElectronCharge;
+	return double(electronsCount) * electronCharge;
 }
 double Atom::getRadio(unsigned short n)const
 {
@@ -155,7 +136,18 @@ const QuantumNumber& Atom::getQuantumNumber() const
 {
 	return qnumber;
 }
-
+double Atom::getLamda(unsigned short n)const
+{
+	return hPlank / getMomentum(n);
+}
+double Atom::getVelocity(unsigned short n)const
+{
+	return getEnergy(n)/hPlank;
+}
+double Atom::getMomentum(unsigned short n)const
+{
+	return (double(n) * hPlank) / (2.0 * M_PI * getRadio(n));
+}
 
 void Atom::set(Symbol s)
 {
